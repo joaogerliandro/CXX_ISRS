@@ -1,6 +1,9 @@
 #pragma once
 
+#include <QApplication>
 #include <QMainWindow>
+#include <QMouseEvent>
+#include <QPoint>
 #include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
@@ -16,11 +19,9 @@ public:
     ~MainWindow();
 
 private slots:
-
     void on_quit_button_clicked();
 
     void on_minimize_button_clicked();
-
 private:
     Ui::MainWindow *ui;
 };

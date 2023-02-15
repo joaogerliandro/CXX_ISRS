@@ -65,6 +65,9 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <property name="spacing">
         <number>2</number>
@@ -124,11 +127,17 @@
           <string notr="true">QPushButton 
 {
 	border: none;
-	color: rgb(255, 255, 255);
+	border-image: url(:/button_images/assets/buttons/minimize_button_unselected.png)  0 0 0 0 stretch stretch;
+}
+
+QPushButton:hover
+{
+	border: none;
+	border-image: url(:/button_images/assets/buttons/minimize_button_selected.png) 0 0 0 0 stretch stretch;
 }</string>
          </property>
          <property name="text">
-          <string>-</string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -150,11 +159,17 @@
           <string notr="true">QPushButton 
 {
 	border: none;
-	color: rgb(255, 255, 255);
+	border-image: url(:/button_images/assets/buttons/quit_button_unselected.png) 0 0 0 0 stretch stretch;
+}
+
+QPushButton:hover
+{
+	border: none;
+	border-image: url(:/button_images/assets/buttons/quit_button_selected.png) 0 0 0 0 stretch stretch;
 }</string>
          </property>
          <property name="text">
-          <string>X</string>
+          <string/>
          </property>
         </widget>
        </item>
