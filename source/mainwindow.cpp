@@ -38,4 +38,3 @@ void MainWindow::mouseMoveEvent(QMouseEvent *mouse_move_event)
 }
 
 
-

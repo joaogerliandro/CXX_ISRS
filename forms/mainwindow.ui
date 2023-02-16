@@ -25,7 +25,11 @@
   <property name="windowTitle">
    <string>CXX_ISRS</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
+  <property name="windowIcon">
+   <iconset resource="../resources/resource_file.qrc">
+    <normaloff>:/default_images/assets/default/default_user_image.png</normaloff>:/default_images/assets/default/default_user_image.png</iconset>
+  </property>
+  <widget class="QWidget" name="login_window">
    <layout class="QVBoxLayout" name="verticalLayout">
     <property name="spacing">
      <number>0</number>
@@ -102,7 +106,7 @@
           <string notr="true">color: rgb(255, 255, 255);</string>
          </property>
          <property name="text">
-          <string>CXX_ISRS</string>
+          <string>Login</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -177,7 +181,364 @@ QPushButton:hover
      </widget>
     </item>
     <item>
-     <widget class="QFrame" name="login">
+     <widget class="QFrame" name="avatar">
+      <property name="minimumSize">
+       <size>
+        <width>400</width>
+        <height>200</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>400</width>
+        <height>200</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(32, 32, 32);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+        <widget class="QFrame" name="image_frame">
+         <property name="minimumSize">
+          <size>
+           <width>160</width>
+           <height>160</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>160</width>
+           <height>160</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QFrame
+{
+	background-color: rgb(255, 255, 255);
+	border-radius: 80px;
+}</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+           <widget class="QFrame" name="user_image">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>150</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>150</width>
+              <height>150</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QFrame
+{
+	border-image: url(:/default_images/assets/default/default_user_image.png) 0 0 0 0;
+	border-radius: 75px;
+}
+</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="user_credentials">
+      <property name="minimumSize">
+       <size>
+        <width>400</width>
+        <height>150</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>400</width>
+        <height>150</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(32, 32, 32);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+        <widget class="QLineEdit" name="username">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::StrongFocus</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit
+{
+	border: 3px solid;
+	border-color: rgb(255, 255, 255);
+	border-radius: 15px;
+	background-color: rgb(62, 62, 62);
+	padding: 10px;
+	color: rgb(255, 255, 255);
+}
+
+QLineEdit:focus
+{
+	border: 3px solid;
+	border-color: rgb(255, 97, 0);
+	border-radius: 15px;
+	background-color: rgb(52, 52, 52);
+	padding: 10px;
+	color: rgb(255, 255, 255);
+}</string>
+         </property>
+         <property name="maxLength">
+          <number>26</number>
+         </property>
+         <property name="placeholderText">
+          <string>Username</string>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+        <widget class="QLineEdit" name="password">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::StrongFocus</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit
+{
+	border: 3px solid;
+	border-color: rgb(255, 255, 255);
+	border-radius: 15px;
+	background-color: rgb(62, 62, 62);
+	padding: 10px;
+	color: rgb(255, 255, 255);
+}
+
+QLineEdit:focus
+{
+	border: 3px solid;
+	border-color: rgb(255, 97, 0);
+	border-radius: 15px;
+	background-color: rgb(52, 52, 52);
+	padding: 10px;
+	color: rgb(255, 255, 255);
+}</string>
+         </property>
+         <property name="maxLength">
+          <number>23</number>
+         </property>
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
+         </property>
+         <property name="placeholderText">
+          <string>Password</string>
+         </property>
+         <property name="clearButtonEnabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="option_login">
+      <property name="minimumSize">
+       <size>
+        <width>400</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>400</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(32, 32, 32);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+        <widget class="QPushButton" name="login_button">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton
+{
+	background-color: rgb(62, 62, 62);
+	border-radius: 15px;
+	color: rgb(255, 255, 255);
+}
+
+QPushButton:hover
+{
+	background-color: rgb(255, 97, 0);
+	border-radius: 15px;
+	color: rgb(32, 32, 32);
+}
+
+QPushButton:pressed
+{
+	background-color: rgb(255, 255, 255);
+	border-radius: 15px;
+	color: rgb(255, 97, 0);
+}
+</string>
+         </property>
+         <property name="text">
+          <string>Login</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="option_tools">
+      <property name="minimumSize">
+       <size>
+        <width>400</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>400</width>
+        <height>60</height>
+       </size>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(32, 32, 32);</string>
       </property>
@@ -192,6 +553,8 @@ QPushButton:hover
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resources/resource_file.qrc"/>
+ </resources>
  <connections/>
 </ui>
