@@ -1,9 +1,7 @@
 #pragma once
 
-#include <QApplication>
-#include <QMainWindow>
-#include <QMouseEvent>
-#include <QPoint>
+#include <common.h>
+#include <navigationmenu.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,6 +21,8 @@ class MainWindow : public QMainWindow
         QPoint mouse_cur_pos;
         QPoint mouse_new_pos;
 
+        Navigationmenu *navigation_menu;
+
     private slots:
         void on_quit_button_clicked();
 
@@ -31,4 +31,6 @@ class MainWindow : public QMainWindow
         void mousePressEvent(QMouseEvent *mouse_press_event);
 
         void mouseMoveEvent(QMouseEvent *mouse_move_event);
+
+        void on_login_button_clicked();
 };

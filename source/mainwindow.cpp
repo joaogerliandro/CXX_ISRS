@@ -37,4 +37,11 @@ void MainWindow::mouseMoveEvent(QMouseEvent *mouse_move_event)
     mouse_cur_pos = mouse_move_event->globalPosition().toPoint();
 }
 
+void MainWindow::on_login_button_clicked()
+{
+    navigation_menu = new Navigationmenu();
+    navigation_menu->show();
+
+    this->close();
+}
 
