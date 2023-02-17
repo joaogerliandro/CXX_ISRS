@@ -7,7 +7,7 @@ Navigationmenu::Navigationmenu(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    //this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
 }
 
 Navigationmenu::~Navigationmenu()
@@ -82,6 +82,8 @@ void Navigationmenu::on_resize_button_clicked()
 
 void Navigationmenu::on_quit_button_clicked()
 {
-    this->close();
+    exit_dialog = new ExitDialog(this);
+
+    exit_dialog->show();
 }
 

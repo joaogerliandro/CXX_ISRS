@@ -1,6 +1,7 @@
 #pragma once
 
 #include <common.h>
+#include <exitdialog.h>
 
 namespace Ui {
 class Navigationmenu;
@@ -24,6 +25,8 @@ class Navigationmenu : public QMainWindow
         bool maximized = false;
 
         QSize window_cur_size;
+
+        ExitDialog *exit_dialog;
 
     private slots:
         void mousePressEvent(QMouseEvent *mouse_press_event);

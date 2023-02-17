@@ -1,5 +1,5 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include <mainwindow.h>
+#include <ui_mainwindow.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -40,6 +40,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *mouse_move_event)
 void MainWindow::on_login_button_clicked()
 {
     navigation_menu = new Navigationmenu();
+
     navigation_menu->show();
 
     this->close();
