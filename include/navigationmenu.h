@@ -19,10 +19,21 @@ class Navigationmenu : public QMainWindow
 
         QPoint mouse_cur_pos;
         QPoint mouse_new_pos;
+        QPoint window_cur_pos;
+
+        bool maximized = false;
+
+        QSize window_cur_size;
 
     private slots:
         void mousePressEvent(QMouseEvent *mouse_press_event);
 
         void mouseMoveEvent(QMouseEvent *mouse_move_event);
+
+        void on_minimize_button_clicked();
+
+        void on_resize_button_clicked();
+
+        void on_quit_button_clicked();
 };
 

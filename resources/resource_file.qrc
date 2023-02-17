@@ -4,6 +4,10 @@
         <file>assets/buttons/minimize_button_unselected.png</file>
         <file>assets/buttons/quit_button_selected.png</file>
         <file>assets/buttons/quit_button_unselected.png</file>
+        <file>assets/buttons/maximize_button_selected.png</file>
+        <file>assets/buttons/maximize_button_unselected.png</file>
+        <file>assets/buttons/resize_button_selected.png</file>
+        <file>assets/buttons/resize_button_unselected.png</file>
     </qresource>
     <qresource prefix="/default_images">
         <file>assets/default/default_user_image.png</file>

@@ -4,3 +4,4 @@
 #include <QMainWindow>
 #include <QMouseEvent>
 #include <QPoint>
+#include <QPixmap>
