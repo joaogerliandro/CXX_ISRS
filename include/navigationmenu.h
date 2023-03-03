@@ -23,6 +23,7 @@ class Navigationmenu : public QMainWindow
         QPoint window_cur_pos;
 
         bool maximized = false;
+        bool exitwin_open = false;
 
         QSize window_cur_size;
 

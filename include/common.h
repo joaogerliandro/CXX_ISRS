@@ -5,3 +5,4 @@
 #include <QMouseEvent>
 #include <QPoint>
 #include <QPixmap>
+#include <QDialog>

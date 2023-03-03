@@ -82,8 +82,12 @@ void Navigationmenu::on_resize_button_clicked()
 
 void Navigationmenu::on_quit_button_clicked()
 {
-    exit_dialog = new ExitDialog(this);
+    if(!exitwin_open)
+    {
+        exitwin_open = true;
 
-    exit_dialog->show();
+        exit_dialog = new ExitDialog(this);
+        exit_dialog->show();
+    }
 }
 
