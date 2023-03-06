@@ -15,6 +15,12 @@ Navigationmenu::~Navigationmenu()
     delete ui;
 }
 
+void Navigationmenu::connect_slots()
+{
+    connect(exit_dialog, SIGNAL( exit_yes_signal() ), this, SLOT( exit_yes_slot() ));
+    connect(exit_dialog, SIGNAL( exit_no_signal() ), this, SLOT( exit_no_slot() ));
+}
+
 void Navigationmenu::mousePressEvent(QMouseEvent *mouse_press_event)
 {
     mouse_cur_pos = mouse_press_event->globalPosition().toPoint();
@@ -84,8 +90,25 @@ void Navigationmenu::on_quit_button_clicked()
 {
     if(!exitwin_open)
     {
+        exitwin_open = true;
+
         exit_dialog = new ExitDialog(this);
+        connect_slots();
+
         exit_dialog->show();
     }
+}
+
+void Navigationmenu::exit_yes_slot()
+{
+    exitwin_open = false;
+    exit_dialog->close();
+    this->close();
+}
+
+void Navigationmenu::exit_no_slot()
+{
+    exitwin_open = false;
+    exit_dialog->close();
 }
 

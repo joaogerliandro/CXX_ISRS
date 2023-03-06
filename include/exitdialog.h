@@ -20,6 +20,11 @@ class ExitDialog : public QDialog
         QPoint mouse_cur_pos;
         QPoint mouse_new_pos;
 
+    signals:
+        void exit_yes_signal();
+
+        void exit_no_signal();
+
     private slots:
         void mousePressEvent(QMouseEvent *mouse_press_event);
 

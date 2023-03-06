@@ -29,6 +29,8 @@ class Navigationmenu : public QMainWindow
 
         ExitDialog *exit_dialog;
 
+        void connect_slots();
+
     private slots:
         void mousePressEvent(QMouseEvent *mouse_press_event);
 
@@ -39,5 +41,9 @@ class Navigationmenu : public QMainWindow
         void on_resize_button_clicked();
 
         void on_quit_button_clicked();
+
+        void exit_yes_slot();
+
+        void exit_no_slot();
 };
 
