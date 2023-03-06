@@ -40,9 +40,15 @@ void MainWindow::mouseMoveEvent(QMouseEvent *mouse_move_event)
 void MainWindow::on_login_button_clicked()
 {
     navigation_menu = new Navigationmenu();
+    connect(navigation_menu, SIGNAL( back_to_login_signal() ), this, SLOT( back_to_login_slot() ));
 
     navigation_menu->show();
 
     this->close();
+}
+
+void MainWindow::back_to_login_slot()
+{
+    this->show();
 }
 

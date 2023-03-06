@@ -91,6 +91,38 @@
         <number>0</number>
        </property>
        <item>
+        <widget class="QPushButton" name="logoff_button">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton 
+{
+	border: none;
+	border-image: url(:/button_images/assets/buttons/logoff_button_unselected.png) 0 0 0 0 stretch stretch;
+}
+
+QPushButton:hover
+{
+	border: none;
+	border-image: url(:/button_images/assets/buttons/logoff_button_selected.png) 0 0 0 0 stretch stretch;
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QLabel" name="window_title">
          <property name="minimumSize">
           <size>

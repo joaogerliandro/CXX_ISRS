@@ -8,6 +8,8 @@ Navigationmenu::Navigationmenu(QWidget *parent) :
     ui->setupUi(this);
 
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+
+    this->setAttribute(Qt::WA_DeleteOnClose, true);
 }
 
 Navigationmenu::~Navigationmenu()
@@ -110,5 +112,11 @@ void Navigationmenu::exit_no_slot()
 {
     exitwin_open = false;
     exit_dialog->close();
+}
+
+void Navigationmenu::on_logoff_button_clicked()
+{
+    this->close();
+    emit back_to_login_signal();
 }
 

@@ -33,4 +33,6 @@ class MainWindow : public QMainWindow
         void mouseMoveEvent(QMouseEvent *mouse_move_event);
 
         void on_login_button_clicked();
+
+        void back_to_login_slot();
 };

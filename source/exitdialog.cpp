@@ -8,6 +8,8 @@ ExitDialog::ExitDialog(QWidget *parent) :
     ui->setupUi(this);
 
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+
+    this->setAttribute(Qt::WA_DeleteOnClose, true);
 }
 
 ExitDialog::~ExitDialog()

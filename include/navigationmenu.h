@@ -31,6 +31,9 @@ class Navigationmenu : public QMainWindow
 
         void connect_slots();
 
+    signals:
+        void back_to_login_signal();
+
     private slots:
         void mousePressEvent(QMouseEvent *mouse_press_event);
 
@@ -45,5 +48,6 @@ class Navigationmenu : public QMainWindow
         void exit_yes_slot();
 
         void exit_no_slot();
+        void on_logoff_button_clicked();
 };
 
