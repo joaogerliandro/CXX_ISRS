@@ -26,5 +26,7 @@ class ExitDialog : public QDialog
         void mouseMoveEvent(QMouseEvent *mouse_move_event);
 
         void on_yes_button_clicked();
+
+        void on_no_button_clicked();
 };
 

@@ -84,8 +84,6 @@ void Navigationmenu::on_quit_button_clicked()
 {
     if(!exitwin_open)
     {
-        exitwin_open = true;
-
         exit_dialog = new ExitDialog(this);
         exit_dialog->show();
     }

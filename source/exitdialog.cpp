@@ -30,5 +30,12 @@ void ExitDialog::mouseMoveEvent(QMouseEvent *mouse_move_event)
 void ExitDialog::on_yes_button_clicked()
 {
     this->close();
+    this->parentWidget()->close();
+}
+
+
+void ExitDialog::on_no_button_clicked()
+{
+    this->close();
 }
 
