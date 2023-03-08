@@ -19,6 +19,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/mysql-connector/include/jdbc)
+
+link_directories(${PROJECT_SOURCE_DIR}/mysql-connector/lib64)
+link_directories(${PROJECT_SOURCE_DIR}/mysql-connector/lib64/vs14)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
@@ -62,6 +66,9 @@ endif()
 
 target_link_libraries(
     CXX_ISRS PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
+    mysqlcppconn
+    libssl
+    libcrypto
 )
 
 set_target_properties(CXX_ISRS PROPERTIES
