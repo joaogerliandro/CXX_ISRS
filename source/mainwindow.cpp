@@ -19,11 +19,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::load_configuration()
 {
-    std::cout << "\nHostname: "   << config.get_host()
-              << "\nDatabase: " << config.get_database()
-              << "\nUsername: " << config.get_username()
-              << "\nPassword: " << config.get_password()
-              << std::endl;
+    config.connect_to_database();
 }
 
 void MainWindow::on_quit_button_clicked()

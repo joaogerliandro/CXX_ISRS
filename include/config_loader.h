@@ -1,6 +1,5 @@
 #pragma once
 
-// Standard Headers
 #include <iostream>
 #include <vector>
 #include <string>
@@ -8,13 +7,7 @@
 #include <sstream>
 #include <exception>
 
-// MySQL Headers
-#include "mysql_connection.h"
-#include <cppconn/driver.h>
-#include <cppconn/exception.h>
-#include <cppconn/resultset.h>
-#include <cppconn/statement.h>
-#include <cppconn/prepared_statement.h>
+#include <connection_factory.h>
 
 namespace CXX_ISRS
 {
@@ -48,24 +41,9 @@ namespace CXX_ISRS
                 config_file.close();
             }
 
-            std::string get_host()
+            void connect_to_database()
             {
-                return db_host;
-            }
-
-            std::string get_database()
-            {
-                return db_name;
-            }
-
-            std::string get_username()
-            {
-                return db_username;
-            }
-
-            std::string get_password()
-            {
-                return db_password;
+                con_factory.connect(db_host, db_name, db_username, db_password);
             }
 
         private:
@@ -73,6 +51,8 @@ namespace CXX_ISRS
             std::string db_name;
             std::string db_username;
             std::string db_password;
+
+            CXX_ISRS::ConnectionFactory con_factory;
 
             void load_default_setting()
             {
@@ -163,7 +143,7 @@ namespace CXX_ISRS
                 }
                 else
                 {
-                    std::string ex = "WARNING: Could not load " + option + " configuration ! The default configuration will be kept.\n";
+                    std::string ex = "[WARNING]: Could not load " + option + " configuration ! The default configuration will be kept.\n";
                     throw std::invalid_argument(ex);
                 }
             }
