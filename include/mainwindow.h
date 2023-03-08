@@ -2,6 +2,7 @@
 
 #include <common.h>
 #include <navigationmenu.h>
+#include <dao/user_dao.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,6 +27,8 @@ class MainWindow : public QMainWindow
         void load_configuration();
 
         CXX_ISRS::Config config;
+
+        UserDAO *user_dao;
 
     private slots:
         void on_quit_button_clicked();

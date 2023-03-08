@@ -39,6 +39,11 @@ namespace CXX_ISRS
                     std::cout << "[WARNING]: Could not return a connection. A connection with host server is needed first !" << std::endl;
             }
 
+            void disconnect()
+            {
+                delete con;
+            }
+
         private:
             sql::Driver *driver;
             sql::Connection *con;

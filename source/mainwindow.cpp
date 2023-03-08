@@ -20,6 +20,8 @@ MainWindow::~MainWindow()
 void MainWindow::load_configuration()
 {
     config.connect_to_database();
+
+    user_dao = new UserDAO(config.get_connection());
 }
 
 void MainWindow::on_quit_button_clicked()
@@ -46,12 +48,29 @@ void MainWindow::mouseMoveEvent(QMouseEvent *mouse_move_event)
 
 void MainWindow::on_login_button_clicked()
 {
-    navigation_menu = new Navigationmenu();
-    connect(navigation_menu, SIGNAL( back_to_login_signal() ), this, SLOT( back_to_login_slot() ));
+    std::string username = ui->username->text().toStdString();
+    std::string password = ui->password->text().toStdString();
 
-    navigation_menu->show();
+    User login_user = user_dao->get_user_by_username(username);
 
-    this->close();
+    if(login_user.username == username & login_user.password == password)
+    {
+        std::cout << "Login sucess ! Welcome " << login_user.fullname << std::endl;
+
+        navigation_menu = new Navigationmenu();
+        connect(navigation_menu, SIGNAL( back_to_login_signal() ), this, SLOT( back_to_login_slot() ));
+
+        navigation_menu->show();
+
+        ui->username->clear();
+        ui->password->clear();
+
+        this->close();
+    }
+    else
+    {
+        std::cout << "Login failed !" << std::endl;
+    }
 }
 
 void MainWindow::back_to_login_slot()

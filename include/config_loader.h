@@ -1,12 +1,6 @@
 #pragma once
 
-#include <iostream>
-#include <vector>
-#include <string>
-#include <fstream>
-#include <sstream>
-#include <exception>
-
+#include <standard_libs.h>
 #include <connection_factory.h>
 
 namespace CXX_ISRS
@@ -44,6 +38,11 @@ namespace CXX_ISRS
             void connect_to_database()
             {
                 con_factory.connect(db_host, db_name, db_username, db_password);
+            }
+
+            sql::Connection* get_connection()
+            {
+                return con_factory.get_connection();
             }
 
         private:
