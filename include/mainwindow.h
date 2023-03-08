@@ -23,6 +23,10 @@ class MainWindow : public QMainWindow
 
         Navigationmenu *navigation_menu;
 
+        void load_configuration();
+
+        CXX_ISRS::Config config;
+
     private slots:
         void on_quit_button_clicked();
 

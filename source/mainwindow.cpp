@@ -5,6 +5,8 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    load_configuration();
+
     ui->setupUi(this);
 
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
@@ -13,6 +15,15 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::load_configuration()
+{
+    std::cout << "\nHostname: "   << config.get_host()
+              << "\nDatabase: " << config.get_database()
+              << "\nUsername: " << config.get_username()
+              << "\nPassword: " << config.get_password()
+              << std::endl;
 }
 
 void MainWindow::on_quit_button_clicked()
