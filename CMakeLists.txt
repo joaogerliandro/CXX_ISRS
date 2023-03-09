@@ -26,6 +26,7 @@ link_directories(${PROJECT_SOURCE_DIR}/mysql-connector/lib64/vs14)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Core)
 
 file(GLOB_RECURSE SOURCES RELATIVE ${PROJECT_SOURCE_DIR} "source/*.cpp")
 file(GLOB_RECURSE HEADERS RELATIVE ${PROJECT_SOURCE_DIR} "include/*.h")
@@ -64,8 +65,16 @@ else()
     endif()
 endif()
 
+# Qt linked libraries
 target_link_libraries(
-    CXX_ISRS PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
+    CXX_ISRS PRIVATE
+    Qt${QT_VERSION_MAJOR}::Widgets
+    Qt${QT_VERSION_MAJOR}::Core
+)
+
+# MySQl linked libraries
+target_link_libraries(
+    CXX_ISRS PRIVATE
     mysqlcppconn
     libssl
     libcrypto

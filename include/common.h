@@ -7,6 +7,7 @@
 #include <QPoint>
 #include <QPixmap>
 #include <QDialog>
+#include <QTimer>
 
 // MySQL Headers
 #include <cppconn/driver.h>

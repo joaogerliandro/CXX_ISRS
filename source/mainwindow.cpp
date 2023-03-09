@@ -107,21 +107,25 @@ void MainWindow::throw_popup(CXX_ISRS::LoginException &ex)
 {
     ui->exception_message->setText(QString::fromStdString(ex.what()));
 
+    std::string ex_stylesheet;
+
     switch(ex.what_type())
     {
         case CXX_ISRS::ExceptionType::INFO:
-            ui->exception_popup->setStyleSheet("background-color: rgba(30, 124, 40, 100%);\n"
-                                               "border-radius: 15px;");
+            ex_stylesheet = "background-color: rgb(30, 124, 40);\n"
+                            "border-radius: 15px;";
             break;
         case CXX_ISRS::ExceptionType::WARNING:
-            ui->exception_popup->setStyleSheet("background-color: rgba(250, 210, 50, 100%);\n"
-                                           "border-radius: 15px;");
+            ex_stylesheet = "background-color: rgb(250, 210, 50);\n"
+                            "border-radius: 15px;";
             break;
         case CXX_ISRS::ExceptionType::ERROR:
-            ui->exception_popup->setStyleSheet("background-color: rgba(150, 2, 0, 100%);\n"
-                                               "border-radius: 15px;");
+            ex_stylesheet = "background-color: rgb(150, 2, 0);\n"
+                            "border-radius: 15px;";
             break;
     }
+
+    ui->exception_popup->setStyleSheet(QString::fromStdString(ex_stylesheet));
 }
 
 void MainWindow::clear_interface()
