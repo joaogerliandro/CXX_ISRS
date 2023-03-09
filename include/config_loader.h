@@ -45,6 +45,11 @@ namespace CXX_ISRS
                 return con_factory.get_connection();
             }
 
+            void disconnect_to_database()
+            {
+                con_factory.disconnect();
+            }
+
         private:
             std::string db_host;
             std::string db_name;

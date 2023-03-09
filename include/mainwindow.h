@@ -24,11 +24,15 @@ class MainWindow : public QMainWindow
 
         Navigationmenu *navigation_menu;
 
-        void load_configuration();
-
         CXX_ISRS::Config config;
 
         UserDAO *user_dao;
+
+        void load_configuration();
+
+        void throw_popup(CXX_ISRS::LoginException &ex);
+
+        void clear_interface();
 
     private slots:
         void on_quit_button_clicked();

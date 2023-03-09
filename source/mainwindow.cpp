@@ -26,6 +26,8 @@ void MainWindow::load_configuration()
 
 void MainWindow::on_quit_button_clicked()
 {
+    config.disconnect_to_database();
+
     this->close();
 }
 
@@ -71,34 +73,63 @@ void MainWindow::on_login_button_clicked()
 
                     navigation_menu->show();
 
-                    ui->username->clear();
-                    ui->password->clear();
+                    clear_interface();
 
                     this->close();
                 }
                 else
                 {
-                    throw CXX_ISRS::LoginException("Login failed ! Wrong password !");
+                    throw CXX_ISRS::LoginException("Login failed ! Wrong password !", CXX_ISRS::ExceptionType::ERROR);
                 }
             }
             else
             {
-                throw CXX_ISRS::LoginException("Login failed ! User not found !");
+                throw CXX_ISRS::LoginException("Login failed ! User not found !", CXX_ISRS::ExceptionType::ERROR);
             }
         }
         else
         {
-            throw CXX_ISRS::LoginException("Can't login ! The credentials can't be empty !");
+            throw CXX_ISRS::LoginException("Can't login ! The credentials can't be empty !", CXX_ISRS::ExceptionType::WARNING);
         }
     }
     catch (CXX_ISRS::LoginException &ex)
     {
-        std::cout << ex.what() << std::endl;
+        throw_popup(ex);
     }
 }
 
 void MainWindow::back_to_login_slot()
 {
     this->show();
+}
+
+void MainWindow::throw_popup(CXX_ISRS::LoginException &ex)
+{
+    ui->exception_message->setText(QString::fromStdString(ex.what()));
+
+    switch(ex.what_type())
+    {
+        case CXX_ISRS::ExceptionType::INFO:
+            ui->exception_popup->setStyleSheet("background-color: rgba(30, 124, 40, 100%);\n"
+                                               "border-radius: 15px;");
+            break;
+        case CXX_ISRS::ExceptionType::WARNING:
+            ui->exception_popup->setStyleSheet("background-color: rgba(250, 210, 50, 100%);\n"
+                                           "border-radius: 15px;");
+            break;
+        case CXX_ISRS::ExceptionType::ERROR:
+            ui->exception_popup->setStyleSheet("background-color: rgba(150, 2, 0, 100%);\n"
+                                               "border-radius: 15px;");
+            break;
+    }
+}
+
+void MainWindow::clear_interface()
+{
+    ui->username->clear();
+    ui->password->clear();
+
+    ui->exception_popup->setStyleSheet("");
+    ui->exception_message->setText("");
 }
 
