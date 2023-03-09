@@ -51,25 +51,42 @@ void MainWindow::on_login_button_clicked()
     std::string username = ui->username->text().toStdString();
     std::string password = ui->password->text().toStdString();
 
-    User login_user = user_dao->get_user_by_username(username);
-
-    if(login_user.username == username & login_user.password == password)
+    if(!username.empty() & !password.empty())
     {
-        std::cout << "Login sucess ! Welcome " << login_user.fullname << std::endl;
+        User login_user = user_dao->get_user_by_username(username);
 
-        navigation_menu = new Navigationmenu();
-        connect(navigation_menu, SIGNAL( back_to_login_signal() ), this, SLOT( back_to_login_slot() ));
+        if(!login_user.username.empty() & !login_user.password.empty())
+        {
+            if(login_user.password == password)
+            {
+                std::cout << "Login sucess !" << std::endl;
 
-        navigation_menu->show();
+                if(!login_user.fullname.empty())
+                    std::cout << "Welcome " << login_user.fullname << std::endl;
 
-        ui->username->clear();
-        ui->password->clear();
+                navigation_menu = new Navigationmenu();
+                connect(navigation_menu, SIGNAL( back_to_login_signal() ), this, SLOT( back_to_login_slot() ));
 
-        this->close();
+                navigation_menu->show();
+
+                ui->username->clear();
+                ui->password->clear();
+
+                this->close();
+            }
+            else
+            {
+                std::cout << "Login failed ! Wrong password !" << std::endl;
+            }
+        }
+        else
+        {
+            std::cout << "Login failed ! User not found !" << std::endl;
+        }
     }
     else
     {
-        std::cout << "Login failed !" << std::endl;
+        std::cout << "Can't login ! The credentials can't be empty !" << std::endl;
     }
 }
 
