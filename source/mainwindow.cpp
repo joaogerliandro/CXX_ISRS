@@ -48,45 +48,52 @@ void MainWindow::mouseMoveEvent(QMouseEvent *mouse_move_event)
 
 void MainWindow::on_login_button_clicked()
 {
-    std::string username = ui->username->text().toStdString();
-    std::string password = ui->password->text().toStdString();
-
-    if(!username.empty() & !password.empty())
+    try
     {
-        User login_user = user_dao->get_user_by_username(username);
+        std::string username = ui->username->text().toStdString();
+        std::string password = ui->password->text().toStdString();
 
-        if(!login_user.username.empty() & !login_user.password.empty())
+        if(!username.empty() & !password.empty())
         {
-            if(login_user.password == password)
+            User login_user = user_dao->get_user_by_username(username);
+
+            if(!login_user.username.empty() & !login_user.password.empty())
             {
-                std::cout << "Login sucess !" << std::endl;
+                if(login_user.password == password)
+                {
+                    std::cout << "Login sucess !" << std::endl;
 
-                if(!login_user.fullname.empty())
-                    std::cout << "Welcome " << login_user.fullname << std::endl;
+                    if(!login_user.fullname.empty())
+                        std::cout << "Welcome " << login_user.fullname << std::endl;
 
-                navigation_menu = new Navigationmenu();
-                connect(navigation_menu, SIGNAL( back_to_login_signal() ), this, SLOT( back_to_login_slot() ));
+                    navigation_menu = new Navigationmenu();
+                    connect(navigation_menu, SIGNAL( back_to_login_signal() ), this, SLOT( back_to_login_slot() ));
 
-                navigation_menu->show();
+                    navigation_menu->show();
 
-                ui->username->clear();
-                ui->password->clear();
+                    ui->username->clear();
+                    ui->password->clear();
 
-                this->close();
+                    this->close();
+                }
+                else
+                {
+                    throw CXX_ISRS::LoginException("Login failed ! Wrong password !");
+                }
             }
             else
             {
-                std::cout << "Login failed ! Wrong password !" << std::endl;
+                throw CXX_ISRS::LoginException("Login failed ! User not found !");
             }
         }
         else
         {
-            std::cout << "Login failed ! User not found !" << std::endl;
+            throw CXX_ISRS::LoginException("Can't login ! The credentials can't be empty !");
         }
     }
-    else
+    catch (CXX_ISRS::LoginException &ex)
     {
-        std::cout << "Can't login ! The credentials can't be empty !" << std::endl;
+        std::cout << ex.what() << std::endl;
     }
 }
 

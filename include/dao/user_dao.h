@@ -2,6 +2,7 @@
 
 #include <common.h>
 #include <entities/user.h>
+#include <exceptions/login_exception.h>
 
 class UserDAO
 {
