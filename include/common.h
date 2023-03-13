@@ -8,6 +8,8 @@
 #include <QPixmap>
 #include <QDialog>
 #include <QTimer>
+#include <QGraphicsOpacityEffect>
+#include <QPropertyAnimation>
 
 // MySQL Headers
 #include <cppconn/driver.h>

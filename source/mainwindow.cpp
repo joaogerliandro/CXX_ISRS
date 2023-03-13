@@ -19,6 +19,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::load_configuration()
 {
+    connect(this, SIGNAL( fade_in_signal() ), this, SLOT( fade_in_slot() ));
+    connect(this, SIGNAL( fade_out_signal() ), this, SLOT( fade_out_slot() ));
+
     config.connect_to_database();
 
     user_dao = new UserDAO(config.get_connection());
@@ -107,25 +110,18 @@ void MainWindow::throw_popup(CXX_ISRS::LoginException &ex)
 {
     ui->exception_message->setText(QString::fromStdString(ex.what()));
 
-    std::string ex_stylesheet;
-
     switch(ex.what_type())
     {
         case CXX_ISRS::ExceptionType::INFO:
-            ex_stylesheet = "background-color: rgb(30, 124, 40);\n"
-                            "border-radius: 15px;";
+            show_popup(30, 124, 40);
             break;
         case CXX_ISRS::ExceptionType::WARNING:
-            ex_stylesheet = "background-color: rgb(250, 210, 50);\n"
-                            "border-radius: 15px;";
+            show_popup(250, 210, 50);
             break;
         case CXX_ISRS::ExceptionType::ERROR:
-            ex_stylesheet = "background-color: rgb(150, 2, 0);\n"
-                            "border-radius: 15px;";
+            show_popup(150, 2, 0);
             break;
     }
-
-    ui->exception_popup->setStyleSheet(QString::fromStdString(ex_stylesheet));
 }
 
 void MainWindow::clear_interface()
@@ -135,5 +131,48 @@ void MainWindow::clear_interface()
 
     ui->exception_popup->setStyleSheet("");
     ui->exception_message->setText("");
+}
+
+void MainWindow::show_popup(uint8_t r, uint8_t g, uint8_t b)
+{
+    std::string ex_stylesheet = std::format("background-color: rgb({}, {}, {});\n"
+                                            "border-radius: 15px;", r, g, b);
+
+    ui->exception_popup->setStyleSheet(QString::fromStdString(ex_stylesheet));
+
+    emit fade_in_signal();
+}
+
+void MainWindow::fade_in_slot()
+{
+    QGraphicsOpacityEffect *effect = new QGraphicsOpacityEffect(this);
+    ui->exception_popup->setGraphicsEffect(effect);
+
+    QPropertyAnimation *animation = new QPropertyAnimation(effect, "opacity");
+    connect(animation, SIGNAL( finished() ), this, SLOT( fade_delay_slot() ));
+
+    animation->setDuration(1500);
+    animation->setStartValue(0);
+    animation->setEndValue(1);
+    animation->setEasingCurve(QEasingCurve::InBack);
+    animation->start(QPropertyAnimation::DeleteWhenStopped);
+}
+
+void MainWindow::fade_out_slot()
+{
+    QGraphicsOpacityEffect *effect = new QGraphicsOpacityEffect(this);
+    ui->exception_popup->setGraphicsEffect(effect);
+
+    QPropertyAnimation *animation = new QPropertyAnimation(effect, "opacity");
+    animation->setDuration(1500);
+    animation->setStartValue(1);
+    animation->setEndValue(0);
+    animation->setEasingCurve(QEasingCurve::OutBack);
+    animation->start(QPropertyAnimation::DeleteWhenStopped);
+}
+
+void MainWindow::fade_delay_slot()
+{
+    QTimer::singleShot(2000, this, SLOT( fade_out_slot() ));
 }
 

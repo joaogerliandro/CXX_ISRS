@@ -30,9 +30,16 @@ class MainWindow : public QMainWindow
 
         void load_configuration();
 
-        void throw_popup(CXX_ISRS::LoginException &ex);
+        void throw_popup(CXX_ISRS::LoginException &);
+
+        void show_popup(uint8_t, uint8_t, uint8_t);
 
         void clear_interface();
+
+    signals:
+        void fade_in_signal();
+
+        void fade_out_signal();
 
     private slots:
         void on_quit_button_clicked();
@@ -46,4 +53,10 @@ class MainWindow : public QMainWindow
         void on_login_button_clicked();
 
         void back_to_login_slot();
+
+        void fade_in_slot();
+
+        void fade_out_slot();
+
+        void fade_delay_slot();
 };
