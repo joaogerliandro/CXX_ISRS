@@ -1,7 +1,7 @@
 #pragma once
 
 #include <standard_libs.h>
-#include <enums/exception_enums.h>
+#include <enums.h>
 
 namespace CXX_ISRS
 {

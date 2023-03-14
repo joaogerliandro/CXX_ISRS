@@ -8,4 +8,10 @@ namespace CXX_ISRS
         WARNING,
         ERROR
     };
+
+    enum UserStatus
+    {
+        ACTIVE,
+        BLOCKED
+    };
 }
