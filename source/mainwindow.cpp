@@ -64,12 +64,13 @@ void MainWindow::on_login_button_clicked()
 
             if(!login_user.username.empty() & !login_user.password.empty())
             {
+                if(login_user.status == CXX_ISRS::BLOCKED)
+                    throw CXX_ISRS::LoginException("User blocked ! Try again later or contact support.", CXX_ISRS::ExceptionType::INFO);
+
                 if(login_user.password == password)
                 {
-                    std::cout << "Login sucess !" << std::endl;
-
-                    if(!login_user.fullname.empty())
-                        std::cout << "Welcome " << login_user.fullname << std::endl;
+                    login_user.bad_password_count = 0;
+                    user_dao->update_user(login_user);
 
                     navigation_menu = new Navigationmenu();
                     connect(navigation_menu, SIGNAL( back_to_login_signal() ), this, SLOT( back_to_login_slot() ));
@@ -82,6 +83,13 @@ void MainWindow::on_login_button_clicked()
                 }
                 else
                 {
+                    login_user.bad_password_count++;
+
+                    if(login_user.bad_password_count >= 3)
+                        login_user.status = CXX_ISRS::UserStatus::BLOCKED;
+
+                    user_dao->update_user(login_user);
+
                     throw CXX_ISRS::LoginException("Login failed ! Wrong password !", CXX_ISRS::ExceptionType::ERROR);
                 }
             }
