@@ -1,9 +1,10 @@
 #include "exitdialog.h"
 #include "ui_exitdialog.h"
 
-ExitDialog::ExitDialog(QWidget *parent) :
+ExitDialog::ExitDialog(QWidget *parent, CXX_ISRS::DialogType dialog_type) :
     QDialog(parent),
-    ui(new Ui::ExitDialog)
+    ui(new Ui::ExitDialog),
+    type(dialog_type)
 {
     ui->setupUi(this);
 

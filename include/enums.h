@@ -14,4 +14,10 @@ namespace CXX_ISRS
         ACTIVE,
         BLOCKED
     };
+
+    enum DialogType
+    {
+        EXIT,
+        LOGOFF
+    };
 }

@@ -90,15 +90,7 @@ void Navigationmenu::on_resize_button_clicked()
 
 void Navigationmenu::on_quit_button_clicked()
 {
-    if(!exitwin_open)
-    {
-        exitwin_open = true;
-
-        exit_dialog = new ExitDialog(this);
-        connect_slots();
-
-        exit_dialog->show();
-    }
+    show_exit_dialog();
 }
 
 void Navigationmenu::exit_yes_slot()
@@ -106,6 +98,9 @@ void Navigationmenu::exit_yes_slot()
     exitwin_open = false;
     exit_dialog->close();
     this->close();
+
+    if(exit_dialog->type == CXX_ISRS::DialogType::LOGOFF)
+        emit back_to_login_signal();
 }
 
 void Navigationmenu::exit_no_slot()
@@ -116,7 +111,19 @@ void Navigationmenu::exit_no_slot()
 
 void Navigationmenu::on_logoff_button_clicked()
 {
-    this->close();
-    emit back_to_login_signal();
+    show_exit_dialog(CXX_ISRS::DialogType::LOGOFF);
+}
+
+void Navigationmenu::show_exit_dialog(CXX_ISRS::DialogType dialog_type)
+{
+    if(!exitwin_open)
+    {
+        exitwin_open = true;
+
+        exit_dialog = new ExitDialog(this, dialog_type);
+        connect_slots();
+
+        exit_dialog->show();
+    }
 }
 

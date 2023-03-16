@@ -31,6 +31,8 @@ class Navigationmenu : public QMainWindow
 
         void connect_slots();
 
+        void show_exit_dialog(CXX_ISRS::DialogType dialog_type = CXX_ISRS::DialogType::EXIT);
+
     signals:
         void back_to_login_signal();
 
@@ -48,6 +50,7 @@ class Navigationmenu : public QMainWindow
         void exit_yes_slot();
 
         void exit_no_slot();
+
         void on_logoff_button_clicked();
 };
 
